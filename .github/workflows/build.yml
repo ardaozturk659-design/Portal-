@@ -12,8 +12,10 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 4.10.3
+      - run: unzip -o multiverse-mod.zip
       - run: gradle build --no-daemon
+        working-directory: multiverse
       - uses: actions/upload-artifact@v4
         with:
           name: multiverse-jar
-          path: build/libs/*.jar
+          path: multiverse/build/libs/*.jar
